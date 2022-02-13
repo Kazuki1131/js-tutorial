@@ -6,9 +6,13 @@ const b = {
     prop: 0
 }
 
-console.log(a == b);
-console.log(a.prop === b.prop);
+// 参照先のオブジェクトが違うため、falseになる
+console.log(a == b); // false
+
+// オブジェクトの中のプロパティのプリミティブな値を比較する場合はtrueになり得る
+console.log(a.prop === b.prop); // true
 
 const c = a;
 
-console.log(a === c);
+// 参照先のオブジェクトが一緒のため、trueになる
+console.log(a === c); // true
