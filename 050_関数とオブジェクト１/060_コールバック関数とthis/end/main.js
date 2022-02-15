@@ -12,4 +12,5 @@ function fn(ref) {
     ref();
 }
 
-fn(person.hello);
+// コールバック関数としてオブジェクト内の関数を実行するとグローバルオブジェクトを参照する
+fn(person.hello); // Hello John
