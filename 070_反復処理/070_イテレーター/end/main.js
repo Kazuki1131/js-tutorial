@@ -2,13 +2,16 @@ function genIterator(max = 10) {
   let i = 0;
 
   return {
+    // イテレーターはnextメソッドで定義する
     next: function() {
       if(i >= max) {
         return {
+          // doneがtrueなら処理を終了
           done: true
         }
       } else {
         return {
+          // doneがfalseなら処理を継続してvalueの値を変更
           done: false,
           value: i++
         }

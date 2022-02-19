@@ -4,6 +4,7 @@ const items = {
 	prop3: 'value3'
 }
 
+// イテレーターと違って、ジェネレーターなら以下のように簡潔に記述できる
 Object.prototype[Symbol.iterator] = function*() {
 	for(let key in this) {
 		yield [key, this[key]];
