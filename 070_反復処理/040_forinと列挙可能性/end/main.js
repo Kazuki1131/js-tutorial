@@ -20,8 +20,15 @@ Object.defineProperty(Object.prototype, 'method', {
 const e = Object.getOwnPropertyDescriptor(obj, s);
 console.log(e)
 
+// for...inは列挙可能プロパティに対して順不同で反復処理を実行する
+// プロトタイプチェーンも列挙対象となる
+// ただしsymbolで定義したプロパティはfor...inでの列挙対象にならない
 for(let key in obj) {
-	// if(obj.hasOwnProperty(key)) {
+	//prototypeを列挙対象から外したい場合は、以下のようにhasOwnPropertyがtrueのkeyだけを指定してあげれば良い
+	if(obj.hasOwnProperty(key)) {
 		console.log(key, obj[key]);
-	// }
+	}
+
+	//symbolの値はenumerableがfalseじゃなくても参照されない
+	console.log(key, obj[key]);
 }
