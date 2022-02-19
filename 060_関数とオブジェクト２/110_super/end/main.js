@@ -11,13 +11,16 @@ class Person {
 
 class Japanese extends Person {
     constructor(name, age, gender) {
+        // superはコンストラクタの一番最初に書かなければエラーになる
         super(name, age);
         this.gender = gender;
     }
 
     hello() {
-        super.hello();
         console.log('Konnichiwa ' + this.name);
+        // super.hello()とすることで親(Person)のhelloメソッドを呼び出す
+        // superで親メソッドを呼び出す場合はメソッドの最初で呼び出す必要はない
+        super.hello();
     }
 
     bye() {
