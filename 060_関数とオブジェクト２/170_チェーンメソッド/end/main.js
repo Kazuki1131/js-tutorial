@@ -4,6 +4,8 @@ class Person {
 		this.age = age;
 	}
 
+	// チェーンメソッドを使うには、戻り値をthisにする
+	// なぜなら、次のチェーンするメソッドは自分のオブジェクトを参照するため。
 	hello(person) {
 		console.log(`${this.name} says hello ${person.name}`);
 		return this;
@@ -28,6 +30,7 @@ class Person {
 const bob = new Person('Bob', 23);
 const tim = new Person('Tim', 33);
 
+// .メソッドでメソッドチェーンできる
 bob.hello(tim)
 	.introduce()
 	.shakeHands(tim)

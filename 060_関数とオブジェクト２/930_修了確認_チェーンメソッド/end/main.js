@@ -2,21 +2,21 @@
  * 問題：
  * 電卓の入力と同じような挙動をするチェーンメソッド
  * を作成してみましょう。
- * 
+ *
  * 例えば、次のように使用し、結果が表示
  * されるようにします。
- * 
- * 
+ *
+ *
  * 例１）
  * const calc = new Calculator();
- * 
+ *
  * calc.set(10)
  * .minus()
  * .set(3) -> '7'を出力(10 - 3)
- * 
+ *
  * 例２）
  * const calc = new Calculator();
- * 
+ *
  * calc.set(10)
  * 	.minus()
  * 	.set(3) -> '7'を出力
@@ -26,11 +26,13 @@
 class Calculator {
 	constructor() {
 		this.val = null;
+		// _プロパティ名と記述する場合は、プライベートプロパティやプライベートメンバーと呼び、
+		// このクラスの中でしか使わないようにと暗示する書き方。開発者の暗黙の了解。
 		this._operator;
 	}
 
 	set(val) {
-		
+
 		if(this.val === null) {
 			this.val = val;
 		} else {
