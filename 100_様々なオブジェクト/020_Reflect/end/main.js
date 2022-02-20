@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * Reflectとは、JSエンジンの内部の汎用的な関数を呼び出すメソッドが格納されているオブジェクト
+ * 内部メソッドを間接的に呼び出せる
+ * Reflectを使用する目的
+ * 1. 内部のメソッドを呼び出す関数の格納場所
+ * 2. Proxyと合わせて使用するため
+ */
+
 class C {
   constructor(a, b) {
     this.a = a;
@@ -8,10 +16,15 @@ class C {
 }
 
 const obj1 = new C(1, 2);
+// 上記は以下のように書き換えられる
+// 演算子で表記していたのを関数表記にできる
+// 関数表記でかけるメリットは、コールバック関数に直接記述できる点がある
+// 演算子だと一度関数として式を囲む必要が出てくる
 const obj2 = Reflect.construct(C, [1, 2]);
 console.log(obj1, obj2);
 
 console.log('c' in obj1);
+// 上記は以下のように書き換えられる
 console.log(Reflect.has(obj1, 'b'));
 
 Object.defineProperty(obj1, 'c', {
@@ -54,5 +67,9 @@ const tom = {
     return this._hello();
   },
 }
-// tom.hello;
+// 以下はtom.hello;と同じ意味。
 Reflect.get(tom, 'hello');
+
+// hello Bobが出力される
+// 第三引数にオブジェクトを渡すと、bindと一緒で渡されたオブジェクトをthisが参照するようになる
+Reflect.get(tom, 'hello', bob);

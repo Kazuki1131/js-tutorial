@@ -1,3 +1,11 @@
+/**
+ * 内部メソッドとReflectとProxyの関係性
+ *   内部メソッド  |     Reflect    |    Proxy
+ *    [[Get]]    |       get      |     get
+ *    [[Set]]    |       set      |     set
+ *   [[Delete]]  | deleteProperty | deleteProperty
+ * [[Construct]] |    construct   |   construct
+ */
 const targetObj = {
   a: 0,
   get value() {
@@ -8,6 +16,7 @@ const targetObj = {
 const handler = {
   get: function (target, prop, receiver) {
     console.log(`[get]: ${prop}`);
+    // Proxyのハンドラーから渡ってくる引数はそのままReflectに渡せるため便利
     if (target.hasOwnProperty(prop)) {
       return Reflect.get(target, prop, receiver);
     } else {
