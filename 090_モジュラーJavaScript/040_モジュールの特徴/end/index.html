@@ -27,8 +27,14 @@
             コースへ
         </a>
     </div>
+    <!-- nomoduleを指定するとIEなど、モジュールに対応していないブラウザでのみ実行することができる -->
     <script nomodule>alert('nomodule')</script>
+    <!-- deferと記述すると非同期でjsファイルが読み込まれる -->
+    <!-- つまり、HTMLの生成が終わった後に読み込まれる -->
     <script src="main.js" defer></script>
+    <!-- typeでmoduleを指定して読み込んだjsファイルはdeferと同じで非同期で読み込まれる -->
+    <!-- typeでmoduleを指定して読み込んだjsファイルは複数読み込まれても重複して読み込まれない -->
+    <!-- 逆に、普通のjsファイルは、複数読み込むことができ、その場合は同じ処理が重複して実行される -->
     <script type="module" src="moduleB.js"></script>
 </body>
 
